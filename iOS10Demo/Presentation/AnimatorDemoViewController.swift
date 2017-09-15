@@ -13,30 +13,38 @@ class AnimatorDemoViewController: UIViewController {
     private var animator: UIViewPropertyAnimator!
     
     @IBOutlet private weak var animatedView: UIView!
-    @IBOutlet private weak var verticalCenterConstraint: NSLayoutConstraint!
     @IBOutlet private weak var horisontalCenterConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var squareBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        animator = UIViewPropertyAnimator(duration: 1, curve: .easeInOut, animations: nil)
+        animator = UIViewPropertyAnimator(duration: 5, curve: .linear, animations: nil)
         
-        animator.addAnimations { [weak self] in
-            self?.verticalCenterConstraint.constant -= 100
+        animator.addAnimations ({ [weak self] in
+            self?.squareBottomConstraint.constant += UIScreen.main.bounds.height
             self?.view.layoutIfNeeded()
-        }
-        
-        animator.addAnimations { [weak self] in
-            self?.horisontalCenterConstraint.constant += 100
-            self?.view.layoutIfNeeded()
+        }, delayFactor: 0)
+
+        animator.addCompletion { _ in
+            print("Animation finished")
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    // MARK: - Actions
+    
+    @IBAction func startPressed(_ sender: Any) {
+        print("Initial constraint constant: \(squareBottomConstraint.constant)")
         animator.startAnimation()
     }
     
+    @IBAction func pausePressed(_ sender: Any) {
+        animator.pauseAnimation()
+    }
+    
+    @IBAction func stopPressed(_ sender: Any) {
+        animator.stopAnimation(false)
+        print("Final constraint constant: \(squareBottomConstraint.constant)")
+    }
 }
 

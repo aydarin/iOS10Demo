@@ -70,25 +70,67 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-iJ-e0k">
-                                <rect key="frame" x="123" y="269" width="128" height="128"/>
+                                <rect key="frame" x="123" y="455" width="128" height="128"/>
                                 <color key="backgroundColor" red="0.1137254902" green="0.42745098040000001" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="G8F-N6-Z6N"/>
                                     <constraint firstAttribute="height" constant="128" id="gNU-qx-Znj"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioZ-t7-aDD">
+                                <rect key="frame" x="113" y="603" width="148" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAh-yL-kRR">
+                                        <rect key="frame" x="0.0" y="0.0" width="34" height="44"/>
+                                        <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="startPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uvH-yU-JFH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6t-za-kXf">
+                                        <rect key="frame" x="54" y="0.0" width="42" height="44"/>
+                                        <state key="normal" title="Pause"/>
+                                        <connections>
+                                            <action selector="pausePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9mB-d5-fAp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjb-BS-g20">
+                                        <rect key="frame" x="116" y="0.0" width="32" height="44"/>
+                                        <state key="normal" title="Stop"/>
+                                        <connections>
+                                            <action selector="stopPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Jx-yg-tQP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fAh-yL-kRR" secondAttribute="bottom" id="4iy-5C-UKg"/>
+                                    <constraint firstItem="fAh-yL-kRR" firstAttribute="leading" secondItem="ioZ-t7-aDD" secondAttribute="leading" id="56p-qa-N0h"/>
+                                    <constraint firstAttribute="trailing" secondItem="zjb-BS-g20" secondAttribute="trailing" id="5O1-bO-Guh"/>
+                                    <constraint firstItem="P6t-za-kXf" firstAttribute="leading" secondItem="fAh-yL-kRR" secondAttribute="trailing" constant="20" id="Kto-H9-ekY"/>
+                                    <constraint firstItem="P6t-za-kXf" firstAttribute="top" secondItem="ioZ-t7-aDD" secondAttribute="top" id="Xhc-vu-x5u"/>
+                                    <constraint firstItem="zjb-BS-g20" firstAttribute="leading" secondItem="P6t-za-kXf" secondAttribute="trailing" constant="20" id="Zvi-L4-8Jr"/>
+                                    <constraint firstItem="zjb-BS-g20" firstAttribute="top" secondItem="ioZ-t7-aDD" secondAttribute="top" id="fQQ-ul-oMG"/>
+                                    <constraint firstAttribute="height" constant="44" id="gU9-YC-UXF"/>
+                                    <constraint firstAttribute="bottom" secondItem="zjb-BS-g20" secondAttribute="bottom" id="i4u-lJ-UrR"/>
+                                    <constraint firstAttribute="bottom" secondItem="P6t-za-kXf" secondAttribute="bottom" id="mTa-nD-Lua"/>
+                                    <constraint firstItem="fAh-yL-kRR" firstAttribute="top" secondItem="ioZ-t7-aDD" secondAttribute="top" id="v6D-8v-ndQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Vf2-iJ-e0k" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UnT-BK-Jbe"/>
+                            <constraint firstItem="ioZ-t7-aDD" firstAttribute="top" secondItem="Vf2-iJ-e0k" secondAttribute="bottom" constant="20" id="Owt-s1-we6"/>
+                            <constraint firstItem="ioZ-t7-aDD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rou-4Z-j2B"/>
                             <constraint firstItem="Vf2-iJ-e0k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aQR-If-s49"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ioZ-t7-aDD" secondAttribute="bottom" constant="20" id="uRD-hR-oiV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="animatedView" destination="Vf2-iJ-e0k" id="awK-Ml-8lp"/>
                         <outlet property="horisontalCenterConstraint" destination="aQR-If-s49" id="Dm1-mL-JiN"/>
-                        <outlet property="verticalCenterConstraint" destination="UnT-BK-Jbe" id="rWE-1a-hTp"/>
+                        <outlet property="squareBottomConstraint" destination="Owt-s1-we6" id="p89-8N-EBq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
