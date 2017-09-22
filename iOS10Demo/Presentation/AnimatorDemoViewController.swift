@@ -8,9 +8,10 @@
 
 import UIKit
 
-class AnimatorDemoViewController: UIViewController {
+class AnimatorDemoViewController: UIViewController, DemoViewController {
     
     private var animator: UIViewPropertyAnimator!
+    var model: Demo!
     
     @IBOutlet private weak var animatedView: UIView!
     @IBOutlet private weak var horisontalCenterConstraint: NSLayoutConstraint!
@@ -18,6 +19,8 @@ class AnimatorDemoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = model.title
         
         animator = UIViewPropertyAnimator(duration: 5, curve: .linear, animations: nil)
         

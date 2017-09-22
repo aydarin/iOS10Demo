@@ -15,10 +15,15 @@ struct Demo {
     let storyboardIdentifier: String
 }
 
+protocol DemoViewController: class {
+    var model: Demo! { get set }
+}
+
 class DemoListViewController: UIViewController {
     
     private let demos = [
-        Demo(title: "UIViewPropertyAnimator", storyboardIdentifier: "AnimatorDemoViewController")
+        Demo(title: "UIViewPropertyAnimator", storyboardIdentifier: "AnimatorDemoViewController"),
+        Demo(title: "Attributed speech recognizer", storyboardIdentifier: "SpeechSynthesizerDemoViewController")
     ]
     
     @IBOutlet private weak var tableView: UITableView!
@@ -37,7 +42,9 @@ extension DemoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc = MainStoryboard.instantiateViewController(withIdentifier: demos[indexPath.row].storyboardIdentifier)
+        let demo = demos[indexPath.row]
+        let vc = MainStoryboard.instantiateViewController(withIdentifier: demo.storyboardIdentifier)
+        (vc as? DemoViewController)?.model = demo
         navigationController?.pushViewController(vc, animated: true)
     }
     
